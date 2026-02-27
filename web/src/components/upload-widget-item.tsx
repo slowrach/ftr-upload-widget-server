@@ -2,18 +2,23 @@ import { Download, ImageUp, Link2, RefreshCcw, X } from "lucide-react";
 import * as Progress from "@radix-ui/react-progress";
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
+import type { Upload } from "../store/uploads";
 
-export function UploadWidgetUploadItem() {
+interface UploadWidgetUploadItemProps {
+  upload: Upload
+}
+
+export function UploadWidgetUploadItem({ upload }: UploadWidgetUploadItemProps) {
   return (
     <div className="p-3 rounded-lg flex flex-col gap-3 shadow-content bg-white/2 relative overflow-hidden">
       <div className="flex flex-col gap-1">
         <span className="text-xs font-medium flex items-center gap-1">
           <ImageUp size={12} className="text-zinc-300" strokeWidth={1.5} />
-          <span>screenshot.png</span>
+          <span>{upload.name}</span>
         </span>
 
         <span className="text-xxs flex items-center gap-1.5 text-zinc-400">
-          300KB
+          {upload.file.size}
           <div className="size-1 rounded-full bg-zinc-700"></div>
           <span className="text-zinc-600 font-medium">45%</span>
         </span>
