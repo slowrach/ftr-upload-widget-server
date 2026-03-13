@@ -41,10 +41,7 @@ export const CircularProgressBar: React.FC<CircularProgressBarProps> = ({
           cy={center}
           initial={{opacity: 0}}
           animate={{opacity: 1}}
-          transition={{
-            duration: 1.5,
-            ease: "circInOut",
-          }}
+          
           style={{
             strokeDasharray: circumference,
             strokeDashoffset: progressOffset,

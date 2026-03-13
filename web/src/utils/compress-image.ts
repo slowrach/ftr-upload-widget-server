@@ -34,6 +34,7 @@ export function compressImage({
 
   return new Promise<File>((resolve, reject) => {
     const reader = new FileReader();
+    
     reader.onload = (event) => {
       const compressed = new Image();
 

@@ -46,7 +46,7 @@ export const useUploads = create<UploadState, [["zustand/immer", never]]>(
 
       updateUpload(uploadId, {
         abortController,
-        originalSize: 0,
+        uploadedSize: 0,
         remoteUrl: undefined,
         compressedSize: undefined,
         status: "uploading",
@@ -110,6 +110,8 @@ export const useUploads = create<UploadState, [["zustand/immer", never]]>(
         set((state) => {
           state.uploads.set(uploadId, upload);
         });
+
+        processUpload(uploadId);
       }
     }
 
@@ -147,7 +149,7 @@ export const usePendingUploads = () => {
       );
 
       const globalPercentage = Math.min(
-        Math.round((uploaded * 100) / total),
+        Math.round((uploaded / total) * 100),
         100,
       );
 
